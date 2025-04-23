@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan</title>
+  <link rel="shortcut icon" type="imagex/png" href="./assets/cruz.png">
+  <link rel="stylesheet" href="./css/var.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/ajude.css">
+  <link rel="stylesheet" href="./css/cadastro.css">
+  <link rel="stylesheet" href="./css/ajude-custom.css"> <!-- Link para o CSS separado -->
+  <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap-grid.css">
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+  <!-- Adicionando ícones -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+     .carrossel-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .carrossel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carrossel-item {
+      background-size: cover;
+      background-position: center;
+      min-width: 100%;
+      height: 800px;
+      filter: brightness(80%);
+      object-fit: cover;/
+    }
+
+    /* Estilos dos controles */
+    .controle {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .controle-esquerda {
+      left: 10px;
+    }
+
+    .controle-direita {
+      right: 10px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .carrossel-container {
+
+        max-width: 100%;
+      }
+    
+    }
+    @media (max-width: 768px) {
+    .carrossel-item {
+        height: 500px; /* Reduz altura dos itens */
+    }
+    .controle {
+        font-size: 20px; /* Ajusta o tamanho dos controles */
+        padding: 8px;
+    }
+}
+
+/* Responsividade para telas pequenas (smartphones) */
+@media (max-width: 480px) {
+    .carrossel-container{
+      height: 300px;
+    }
+
+  .carrossel-item {
+
+        height: 300px; /* Altura menor em telas pequenas */
+    }
+    .controle {
+        font-size: 18px; /* Ajusta tamanho dos controles */
+        padding: 6px;
+    }
+}
+</style>
+
+<body>
+  <nav class="nav nav-resto">
+    <div class="nav-logo">
+      <p>Evan</p>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <ul>
+        <li><a href="index.html" class="link  black">Home</a></li>
+        <li><a href="ide.html" class="link black">Ide</a></li>
+        <li><a href="ajude.html" class="link   active black">Ajude</a></li>
+        <li><a href="missionarios.html" class="link black">Missionários</a></li>
+        <li id="editProfileBtn"><a href="editar-perfil.html" class="link">Editar Perfil</a></li>
+      </ul>
+    </div>
+    <div class="nav-button">
+      <button class="botao-nav botao-branco" id="logoutBtn">
+        <a href="" style="text-decoration: none; color: #ffffff;">Sair</a>
+      </button>
+      <button class="botao-nav botao-branco" id="loginBtn">
+        <a href="cadastro.html" style="text-decoration: none; color: #ffffff;">Cadastre-se</a>
+      </button>
+      <button class="botao-nav" id="signupBtn">
+        <a href="cadastro.html" style="text-decoration: none; color: #ffffff;">Login</a>
+      </button>
+    </div>
+    <div class="nav-menu-botao">
+      <i class="bx bx-menu" onclick="functionmenu()"></i>
+    </div>
+  </nav>
+
+  <main class="ajude-main">
+    <div class="container">
+      <div class="row row-head">
+        <div class="col-12 head-ajude">
+          <div class="center">
+            <p class="titulo-ajude" id="tituloAjude">"Por que eu deveria ajudar ?"</p>
+          </div>
+          <p class="subtitulo-ajude" id="subtituloAjude">Aqui você vai entender como você pode ajudar e porque deve
+            fazer isso</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <section class=" container-fluid container-abrace">
+    <div class="container">
+      <div class="row acolher">
+        <div>
+          <div class="abrace"> Acolha um missionário </div>
+        </div>
+        <div class="isaque  col-12"></div>
+
+        <p class="dificuldade-missão">" Elas [as feridas] são reais, e não há mais como fingir que não existem, e
+          que por estar fazendo a vontade de Deus, não há dor. Não somos super-heróis. Somos falhos, muitas vezes fracos
+          e
+          machucados. E, como ovelhas feridas necessitam do seu pastor, nós somos totalmente dependentes daquele que
+          detém o
+          bálsamo de Gileade para cicatrizá-las." <a class="referencia"
+            href="https://ultimato.com.br/sites/caminhosdamissao/2019/02/22/campo-missionario-fere-sim/"> Elisângela
+            Oliveira</a>
+        </p>
+        <div class="col-xxl-5 col-lg-6 col-md-12 col-sm-12 foto-acolher"> </div>
+
+        <div class="col-xxl-7 col-lg-6
+    col-md-12 col-sm-12">
+          <p class="texto-acolher">Fazer missões não é um trabalho individual mas sim coletivo, os Missionários da mesma
+            forma que quem fica, têm sentimentos, sentem saudade, precisam
+            de amigos, se conectar com as pessoas que ficaram, escutar conselhos sobre a vida etc. a frase citada
+            anteriormente veio de um site onde uma missionária
+            relata as dores e como ela se sente depois de 4 anos em missão. Antes de abordarmos como é importante
+            financiar as missões, é importante falar sobre o apoio emocional que os missionários precisam
+            ter, ir para fazer missões não se trata apenas de uma condição financeira boa, mas sim de toda uma estrutura
+            espiritual e psicológica. Se imagine em um lugar onde você nunca foi antes, com pessoas que você nunca viu
+            antes
+            estando longe da sua família, dos seus amigos mais próximos e de todas as coisas que você deixou para trás,
+            é claro que você vai fazer amigos com as pessoas que forem junto a ti, mas infelizmente nem sempre os povos
+            vão ser tão receptivos
+            e quando isso acontece é ai que o auxílio se torna mais necessario ainda, mas se imagine longe de todos os
+            laços que você
+            vivenciou e amou por anos, não gostaria que as pessoas que você via todo final de semana, te mandassem
+            mensagem, perguntassem como tem sido essa nova jornada?
+          <p class="texto-acolher">Se você é amigo ou conhece alguém que é missionário ligue para essa pessoa, pergunte
+            como ela tem se sentido, peça para que ela te conte um testemunho
+            ore por ela, mostre o amor que o Senhor te deu, acolha ela como se fosse Jesus que estivesse precisando da
+            sua ajuda, tenho certeza que você não negligenciaria Ele.
+          </p>
+
+          </p>
+
+        </div>
+        <br>
+
+        <div class="col-12">
+          <p class="abrace">Desempenho Missionário</p>
+          <div class="col-12 foto-desempenho"></div>
+          <p class="citacao">“‘De ninguém!’ Estas foram as palavras de vários missionários à pergunta, ‘de quem vocês
+            receberam apoio ou cuidado pastoral?’, feita em uma pesquisa por Van der Meer (2009, p. 157). Uma vez
+            desmistificada a ideia de que o missionário seja algum tipo de super-herói, ou uma pessoa muito especial, é
+            possível olhar para ele como uma pessoa que foi criada a imagem e semelhança de Deus, como todos os outros
+            seres humanos. E, não são necessários grandes atos para ajudá-los. O trabalho no campo missionário não deve
+            ser um trabalho solitário de um membro. O trabalho precisa envolver todo o corpo de Cristo, a igreja. Girón
+            (1998, p. 54), afirma que ‘a supervisão é necessária, para garantir que o trabalho atribuído a cada
+            missionário seja concluído com sucesso, mas, em longo prazo, o trabalho pastoral é ainda mais importante que
+            a supervisão’. O missionário precisa, sim,
+            desempenhar bem o trabalho que lhe foi proposto, porém, se ele estiver
+            machucado ou doente o trabalho não será realizado de forma adequada e satisfatória"
+            <a class="referencia" href="https://www.revista.fidelis.edu.br/index.php/cognito/article/view/7">Revista
+              Fidelis</a>
+          </p>
+
+          <p class="texto-acolher" style="margin-top: 20px; margin-bottom: 20px;"> Cuidar dos missionários é uma tarefa
+            muito importante, eles estão trabalhando cuidando de outras pessoas,
+            oferecem o melhor que tem para Deus e para as pessoas
+            a vida deles se baseia em ir para os lugares que precisam de pessoas pregando o evangelho. quando você
+            auxilia um missionário você ajuda na expansão do Reino de Deus,
+            quando um missionário tem o devido apoio no campo, ele pode exercer o trabalho da melhor forma possível,
+            seja um instrumento nas mãos do Senhor para abençoar a vida daqueles que vão,
+            se você não consegue contribuir com dinheiro, contribua com AMOR, o amor que Cristo tem para os seus filhos.
+            Sendo assim, ACOLHA UM MISSIONÁRIO.</p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+  <section class="entender">
+    <div class="container">
+      <div class="row">
+        <p class="Paul "> "Há somente dois ministérios em missões ou você é chamado para descer ao poço ou você é
+          chamado
+          para segurar a
+          corda para aqueles que irão descer,
+          de qualquer modo deveria haver cicatrízes em sua mão, ou você vai como um missionário para a glória de Deus e
+          pelo
+          grande privilégio que ele te concedeu, você vai
+          e morre no campo missionário, ou você morre aqui segurando a corda para aqueles que estão descendo, onde estão
+          suas cicatrizes?, quanto te custa ser Cristão?"
+          - (Paul Washer) </p>
+
+        <div class="col-xxl-6 col-lg-7 col-md-12 col-sm-12 foto-lado"></div>
+        <div class="col">
+          <br>
+          <p class="ajudar"> Um cristão verdadeiro deve cumprir o ide de qualquer forma, ele precisa contribuir para a
+            expansão do Reino de Deus, você precisa se envolver,
+            quando você contribui, a sua oferta vai para lugares onde você não consegue ir, quando você contribui você
+            ajuda com o sustento de um missionário e suas despesas (alimentação, comida e moradia), e é uma chance de
+            impulsionar
+            a grande comissão que fomos chamados para participar até que o Senhor venha.
+
+          </p>
+          <br>
+          <div class="blur-cont">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <span class="blur"></span>
+          </div>
+
+          <p class="ajudar">
+            As viagens missionárias ou até mesmo a permanência no local para qual o missionário foi enviado demanda
+            custos, em nossas casas temos gastos como água, luz e internet e etc, assim acontece em missões. Ser
+            missionário não é apenas visitar lugares ao redor do mundo, mas sim cumprir uma missão, falar do amor do
+            Senhor para as outras pesssoas, ser missionário é uma PROFISSÃO, servir nos lugares de forma integral
+            geralmente não tem como se sustentar através do trabalho em alguma empresa ou estabelecimento. Ser
+            missionário é uma profissão porque os irmãos em Cristo que vão, fazem isso da vida, da mesma forma que os
+            que ficam devem cumprir o IDE no serviço, escola, faculdade ou bairro onde se situa de forma fixa, assim é
+            um missionário.
+          </p>
+
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>
+      <div class="row" style="margin-top: 30px; flex-direction: row-reverse;">
+        <div class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 foto-ladoo "></div>
+        <div class=" col " style="margin-top: 20px;">
+
+          <p class="ajudar" style="margin-left: 0; margin-right: 20px ;"> De acordo com site <a
+              href="https://www.luzemacao.com/stats/">Luz
+              em Ação</a> os Cristãos em geral tem uma renda anual equivalente a 45trilhões de dólares, os cristãos
+            evangélicos 7 trilhões de doláres, essa pesquisa mostra o quão escasso é o investimento em missões pelo
+            mundo pois 1,65% da renda cristã, ou ($700 bilhões) é investido em “causas cristãs”,
+            0,11% da renda cristã ($45 bilhões) é investido em “missões”. 0,0064% da renda cristã ($450 milhões) é
+            investido em “Povos Não Alcançados”.(povos não alcançados são povos que tem um alcance extremamente limitado
+            do evangelho)
+          </p>
+          <br>
+
+          <p class="ajudar" style="margin-left: 0; margin-right: 20px">Evangélicos no Brasil doam cerca de 30 centavos
+            por mês para
+            alcançar os Povos Não
+            Alcançados. Os números mostram o quão preocupante é o apoio financeiro da igreja, existem Dentre os mais de
+            7 mil idiomas do mundo, apenas 10% deles têm a Bíblia completa em sua língua.
+            Enquanto cerca de 3,6 mil só possuem alguns versículos ou trechos. <a
+              href="https://www.missoesmundiais.com.br/noticias/oferte/821-biblias-para-os-povos-2023#:~:text=Existem%20milhões%20de%20pessoas%20que,possuem%20alguns%20versículos%20ou%20trechos.">Junta
+              de missões mundiais</a>
+          </p>
+          <br>
+          <p class="ajudar" style="margin-left: 0;"> O Senhor nos chamou para ser suas testemunhas em todos os lugares,
+            mas como temos financiando a obra, a profissão dos missionários
+            que vão para esses lugares? precisamos nos posicionar e ajudar mais, por mais que seja pouco, qualquer
+            quantia importa, 10, 20, 30 reais, seja lá a quantidade, o pouco importa, pois se todas as pessoas pensassem
+            que uma quantia fosse pouca para doação
+            ninguém doaria, é preciso criar a mentalidade de ajuda coletiva, quando muitos ajudam, mesmo que em pouca
+            quantia, essa quantia se multiplica, então DOE
+          </p>
+          <div class="blur-cont ">
+            <span class="blur" style="margin-left:50px ; margin-bottom: 400px;"></span>
+            <span class="blur" style="margin-left:50px ; margin-bottom: 400px;"></span>
+            <span class="blur" style="margin-left:50px ; margin-bottom: 400px;"></span>
+            <span class="blur" style="margin-left:50px ;margin-bottom: 400px;"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <br>
+
+  </section>
+  <div class="container-fluid" style="margin-bottom: 30px; margin-top: 50px;">
+
+    <div class="row">
+      <p class="projetos">você também pode contribuir de outras formas </p>
+      <p class="sub-projeto"> Fazer missão envolve diversos projetos, ações ou instituições/bases missionárias, veja
+        abaixo dois exemplos de projetos que você pode ajudar</p>
+      <div class="col "> </div>
+    </div>
+
+  </div>
+
+
+  <div class="carrossel-container">
+    <div class="carrossel-wrapper">
+      <div class="carrossel-item" style="background-image: url('./assets/léo.jpg');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/quilombola.JPG');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/fotoq.JPG');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/quilombolas.JPG');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/ame.JPG');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/amar.JPG');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/senhora.JPG');">
+        <div class="frase">Amar e Servir <br> Ação social
+        </div>
+      </div>
+    </div>
+
+
+    <div class="controle controle-esquerda" onclick="mudarSlide(-1)">&#10094;</div>
+    <div class="controle controle-direita" onclick="mudarSlide(1)">&#10095;</div>
+  </div>
+  <div class="container">
+    <p class="texto-projeto">Amar e servir é uma ação social que começou em 2019, eles focam especificamente em ajudar
+      uma comunidade Quilombola, em Eldorado São Paulo, junto com os voluntários
+      eles vão para essa comunidade, ajudar de diversas formas, distribuindo cestas básicas para os moradores, fazem
+      cortes de cabelo e distribuem remédios
+      (remédios diversos para doenças e ocasiões comuns, diabetes, pressão, anticoncepcionais etc.), através de essas
+      ações, eles espalham a palavra
+      Deus para essas pessoas. O projeto também visa o cuidado médico dos moradores através de uma médica e uma
+      enfermeira que geralmente vão até essa comunidade uma vez por mês para cuidar da
+      saúde daqueles que necessitam
+    </p>
+
+    <p class="texto-projeto"> Eles fazem o levantamento das pessoas que precisam de ajuda e em um dia específico vão até
+      a comunidade com os voluntários e passam o dia servindo a comunidade, com
+      diversas atividades (gincana, contanção de histórias e outras coisas), eles aceitam doações diversas e estão
+      dispostos a receber mais voluntários. Para saber mais e acompanhar mais de perto, entre o instagram deles : <a
+        href="https://www.instagram.com/amareservirsempre/">Instagram Amar e Servir </a>
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <p class="projetos"> Bíblia em áudio</p>
+    <div class="row">
+      <div class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 audioo"></div>
+      <div class="col ">
+        <p class="texto-projeto"> "A distribuição bíblica em áudio é uma iniciativa que leva a Palavra de Deus por meio
+          de cartões de memória contendo a Bíblia completa, trechos selecionados ou histórias bíblicas e até filmes, em
+          10 línguas maternas da Guiné-Bissau
+          Essa abordagem permite alcançar comunidades em sua língua nativa, algo crucial para a cultura de oralidade do
+          povo guineense, garantindo que a mensagem divina seja ouvida, compreendida e vivenciada por todos" <a
+            href=""></a>
+        </p>
+        <p class="texto-projeto">Os responsáveis também ensinam a como usar o cartão de memória, desde inserir, até
+          escolher os capítulos da Bíblia e assim eles podem usufruir 100%
+          do presente. Esse projeto tem gerado diversos testemunhos de pessoas que se converteram aos caminhos do
+          Senhor.
+        </p>
+      </div>
+    </div>
+      <div class="row" style="flex-direction: row-reverse;">
+        <div class="col-xxl-6 col-lg-6 col-md-12 col-sm-12 audio" style="flex-direction: row;"></div>
+        <div class="col">
+          <p class="texto-projeto"> Este senhor é um muçulmano que foi abordado por uma equipe missionária enquanto ele
+            lia o alcorão, eles entregaram o chip para ele, ele deixou o alcorão de lado e começou
+            a ouvir a voz de Deus na sua, língua nativa, a semente foi plantada, para saber mais sobre o projeto, ver
+            mais testemunhos a respeito de como a distribuição bíblica em áudio tem transformado e
+            trazido vida para essas pessoas, acompanhe o instagram </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer ">
+    <div class="footer-content container ">
+      <div class="footer-section">
+        <h4>Responsáveis pelo Projeto</h4>
+        <p><a href="https://www.linkedin.com/in/davi-alves-8405b3249/" target="_blank">Davi Alves</a> </p>
+        <p> <a href="" target="_blank">João Gomes</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Movimentos Citados</h4>
+        <p>
+          <a href="https://www.instagram.com/movimentokebur/" target="_blank">Bíblia em Áudio</a></p> 
+ 
+         <p><a href="https://www.instagram.com/amareservirsempre/" target="_blank">Servir e Amar</a></p>
+        
+      </div>
+      <div class="footer-section missionarios-section">
+        <h4>Missionários que ajudaram!</h4>
+        <div class="missionarios">
+          <div class="row" style="flex-direction: row;">
+          <a href="https://www.instagram.com/rayanemaartins_/" target="_blank">Rayane Martins</a>
+          <a href="https://www.instagram.com/isaque_brolezi/" target="_blank">Isaque Brolezi</a>
+          <a href="https://www.instagram.com/mz_brenoxz/" target="_blank">Breno Rocco Munhoz</a>
+          <a href="https://www.instagram.com/rafael4nari/" target="_blank">Rafael Fornari</a>
+       </div> </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/carrosel.js"> </script>
+  <script src="./js/iniciar-firebase.js"></script>
+  <script src="./js/navbar.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/logout.js"></script>
+  <script src="./js/perfilPublico.js"></script>
+
+
+
+  <script>
+    function smoothScroll(target, duration) {
+      const start = window.scrollY; 
+      const distance = target - start; 
+      let startTime;
+
+      function animation(currentTime) {
+        if (!startTime) startTime = currentTime; 
+        const timeElapsed = currentTime - startTime; 
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutQuad(progress); 
+
+        window.scrollTo(0, start + (distance * ease)); 
+
+        if (progress < 1) requestAnimationFrame(animation); 
+      }
+
+      function easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 * t) - (2 * t * t);
+      }
+
+      requestAnimationFrame(animation); 
+    }
+
+
+    setTimeout(() => {
+      smoothScroll(window.innerHeight, 2000);
+    }, 2000); 
+
+  </script>
+</body>
+
+</html>

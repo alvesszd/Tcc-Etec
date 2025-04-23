@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Cormorant:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Special+Elite&display=swap');
+:root {
+    
+    --fonte-texto: "Montserrat", sans-serif;
+    --fonte-titulo: "Big Shoulders Display", sans-serif;
+    --fonte-logo: "Tangerine", cursive;
+    --fonte-maquina: " Special Elite ";
+    --cor-principal: #0046B8; /* Azul Brilhante */
+    --cor-secundaria: #AAB6C8; /* Cinza Azulado Claro */
+    --cor-neutro-1: #4F5B66; /* Cinza Escuro */
+    --cor-neutro-2: #F1F4F8; /* Branco Suave */
+    --cor-acento: #88BBD6; /* Azul Gelo */
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    color: #121212;
+}
+
+.nav-geral{
+    background-color: #121212;
+}
+.rodape {
+    background-color: #121212;
+    height: 40vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    list-style: none;
+}
+
+.footer-color {
+    font-family: var(--fonte-texto);
+    background-color: #121212;
+    line-height: 25px;
+    font-weight: 400;
+    color: #fff;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.footer-h1 {
+    font-family: var(--fonte-texto);
+    line-height: 40px;
+}
+
+.rodape-a {
+    color: #fff;
+    font-size: 20px;
+}
+
+.tamanho-1 {
+    height: 600px;
+}
+.footer {
+    background-color: #121212;
+    color: var(--cor-neutro-2);
+    padding: 40px 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 220px;
+  }
+  
+  .footer-section h4 {
+    color:var(--cor-neutro-2);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .footer-section p {
+    font-size: 1rem;
+  }
+  
+  .footer-section a {
+    color: var(--cor-neutro-2);
+    text-decoration: none;
+  }
+  
+  .footer-section a:hover {
+    text-decoration: underline;
+  }
+  
+  .missionarios-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .missionarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .missionarios a {
+    color:  var(--cor-neutro-2);
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .missionarios a:hover {
+    text-decoration: underline;
+  }
+
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, .3);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-screen p {
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+}

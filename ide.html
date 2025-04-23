@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan</title>
+  <link rel="stylesheet" href="./css/var.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/funções.css">
+  <link rel="stylesheet" href="./css/cadastro.css">
+  <link rel="stylesheet" href="./css/ide.css">
+  <link rel="shortcut icon" type="imagex/png" href="./assets/cruz.png">
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap-grid.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .carrossel-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .carrossel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carrossel-item {
+      background-size: cover;
+      background-position: center;
+      min-width: 100%;
+      height: 800px;
+      filter: brightness(80%);
+      object-fit: cover;/
+    }
+
+    .controle {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .controle-esquerda {
+      left: 10px;
+    }
+
+    .controle-direita {
+      right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .carrossel-container {
+
+        max-width: 100%;
+      }
+    
+    }
+    @media (max-width: 768px) {
+    .carrossel-item {
+        height: 500px; 
+    }
+    .controle {
+        font-size: 20px; 
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrossel-container{
+      height: 300px;
+    }
+
+  .carrossel-item {
+
+        height: 300px; 
+    }
+    .controle {
+        font-size: 18px; 
+        padding: 6px;
+    }
+}
+  </style>
+</head>
+
+<body>
+  <nav class="nav nav-resto">
+    <div class="nav-logo">
+      <p>Evan</p>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <ul>
+        <li><a href="index.html" class="link">Home</a></li>
+        <li><a href="ide.html" class="link active">Ide</a></li>
+        <li><a href="ajude.html" class="link ">Ajude</a></li>
+        <li><a href="missionarios.html" class="link">Missionários</a></li>
+        <li id="editProfileBtn"><a href="editar-perfil.html" class="link">Editar Perfil</a></li>
+      </ul>
+    </div>
+    <div class="nav-button">
+      <button class="botao-nav botao-branco" id="logoutBtn">
+        <a href="" style="text-decoration: none; color: #fff">Sair</a>
+      </button>
+      <button class="botao-nav botao-branco" id="loginBtn">
+        <a href="cadastro.html" style="text-decoration: none; color: #fff">Cadastre-se</a>
+      </button>
+      <button class="botao-nav" id="signupBtn">
+        <a href="cadastro.html" style="text-decoration: none; color: #fff">Login</a>
+      </button>
+    </div>
+    <div class="nav-menu-botao">
+      <i class="bx bx-menu" onclick="functionmenu()"></i>
+    </div>
+  </nav>
+  <div class="container-grid">
+    <div class="row">
+      <div class="col">
+        <div class="foto">
+          <p class="titulo texto-foto">O que é o IDE?</p>
+          <p class="desc-foto"> cumprir o ide não é apenas ir para as nações, aprenda mais sobre o ide e como cumpri-lo
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-grid conteiner">
+    <div class='parent'>
+      <div class="magicpattern" />
+    </div>
+    <div class="container  ">
+      <div class="row ">
+
+        <div class="col-12  align-center-2 paragrafo">
+          <p class="definir"> O ide é um Mandamento </p>
+          <p class="descrever">
+            &nbsp; &nbsp;"E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura.
+            Quem crer e for batizado será salvo; mas quem não crer será condenado.
+            E estes sinais seguirão aos que crerem: em meu nome, expulsarão demônios; falarão novas línguas;
+            pegarão nas serpentes; e, se beberem alguma coisa mortífera, não lhes fará dano algum; e imporão as mãos
+            sobre os enfermos e os curarão.
+            Ora, o Senhor, depois de lhes ter falado, foi recebido no céu e assentou-se à direita de Deus.
+            E eles, tendo partido, pregaram por todas as partes, cooperando com eles o Senhor e confirmando a palavra
+            com os sinais que se seguiram. Amém!" <a href="https://www.bible.com/pt/bible/211/MRK.16.15-18"
+              style="font-weight: 600; text-decoration: none;">Marcos 16:15-20 </a>
+          </p>
+        </div>
+          <br>
+          
+          <p class="descrever" style="margin-bottom: 20px ;">
+            &nbsp; &nbsp; Jesus foi bem claro em dizer IDE, ou seja VÃO e façam isso que eu os ordenei, sejam a luz do
+            mundo e mostrem o amor que alcançou vocês para alcançar as outras pessoas,
+            para levar salvação
+            “Como está escrito: Quão formosos são os pés dos que anunciam coisas boas!” (Romanos 10:15). É uma missão de
+            todos os filhos de Deus anunciar o Reino de Deus, anunciar que Cristo morreu
+            pelos nossos pecados, conhecer a Cristo, o Emanuel (Emanuel significa Deus conosco), Jesus nos chama para
+            pregar o evangelho a toda e qualquer criatura e sermos a luz do mundo, luz essa
+            que é abastecida pelo Espírito Santo que habita em nós, sendo assim representantes do Reino de Deus. "Vocês
+            são a luz do mundo. Não se pode esconder uma cidade construída sobre um monte.
+            Ninguém acende uma lâmpada e a coloca debaixo de uma vasilha. Ao contrário, coloca‑a no lugar apropriado e,
+            assim,
+            ilumina todos os que estão na casa. Da mesma forma, brilhe a luz de vocês diante dos homens, para que vejam
+            as
+            suas boas obras e glorifiquem a seu Pai, que está nos céus." <a
+              href="https://www.bible.com/pt/bible/129/MAT.5.14-16.NVI"
+              style="font-weight: 600; text-decoration: none;">(Mateus 5:14-16).</a>
+
+          </p>
+          <br>
+          <div class="foto-mel col-12"></div>
+          <p class="descrever" style="margin-top: 20px;">&nbsp; &nbsp; O mundo corrompido pelo pecado está em trevas e a iniquiedade cegou os
+            olhos
+            do homem
+            "O deus desta era cegou o entendimento dos descrentes, para que não vejam a luz do evangelho da glória de
+            Cristo, que é a imagem de Deus."
+            <a href="https://www.bible.com/pt/bible/129/2CO.4.4" style="font-weight: 600; text-decoration: none;">
+              (2Coríntios 4:4)</a>
+            quando é citado o "deus desta era" significa o diabo, o inimigo
+            isso significa que aquele que influenciou adão e eva a pecarem está agindo continuamente para que as pessoas
+            não enxerguem a luz de Cristo, fazendo com que elas
+            amem mais as coisas terrenas do que a salvação que Cristo nos dá e nos deu através do seu Sacrifício na Cruz
+            "Porque Deus tanto amou o mundo que deu o seu Filho Unigênito, para que todo aquele que nele crer não
+            pereça,
+            mas tenha a vida eterna.
+            Pois Deus enviou o seu Filho ao mundo não para condenar o mundo, mas para que o mundo fosse salvo por meio
+            dele. Quem nele crê não é condenado, mas quem não crê já está condenado,
+            por não crer no nome do Filho Unigênito de Deus. Este é o julgamento: a luz veio ao mundo, mas os homens
+            amaram as trevas no lugar da luz, porque as suas obras eram más.
+            Pois quem pratica o mal odeia a luz e não se aproxima da luz para que as suas obras não sejam manifestas.
+            Quem, porém, pratica a verdade vem para a luz para que se veja
+            claramente que as suas obras são realizadas por intermédio de Deus."
+
+              
+            <a href="https://www.bible.com/pt/bible/129/JHN.3.16-21" style="text-decoration: none; font-weight: 600;">
+              (Jõao 3:16-21)</a>
+            .tendo visto tudo isso que foi dito, o ide é uma ordem e uma MISSÃO e uma ordem de fazer com que as trevas
+            caiam por terra através da pregação do evangelho de Cristo
+            e o poder e a capacitação
+            do Espírto Santo.
+            'Pois Deus, que disse:
+            “Das trevas resplandeça a luz”, ele mesmo brilhou no nosso coração, para a iluminação do conhecimento da
+            glória de Deus na face de Jesus Cristo."
+
+
+            <a href="https://www.bible.com/pt/bible/129/2CO.4.6 "
+              style="text-decoration: none; font-weight: 600;">2Coríntios 4:6</a>
+          </p>
+
+          <p class="descrever"> Nesse site o foco vai ser os missionários que estão indo para outros lugares mas o ide é para todos e de alguma forma 
+            devemos os que ficam devem participar do Ide, pois a palavra diz: 
+            "Mas receberão poder quando o Espírito Santo descer sobre vocês, e
+            serão minhas testemunhas tanto em Jerusalém como em toda a Judeia e Samaria e até os confins da terra. Tendo dito isso, foi elevado
+             às alturas enquanto eles olhavam, e uma nuvem o encobriu da vista deles. Ficaram com os olhos fixos no céu enquanto ele subia. De repente, 
+             dois homens vestidos de branco se puseram ao lado deles e lhes disseram: ― Galileus,
+             por que vocês estão olhando para o céu? Este mesmo Jesus, que dentre vocês foi elevado aos céus, voltará da mesma forma que o viram subir."
+             Jesus nos chamou para pregar em todos os lugares, todos nós somos missionarios, quando vemos a ordem das cidades citadas onde os discípulos seriam testemunhas
+             é possível ver uma progressão de distância, do lugar onde eles estavam, para a cidade próxima, outra mais longe e até os confins da terra, precisamos ser missionários independete do lugar.
+              
+             </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="video container-fundo">
+    <div class="container-fluid container-2">
+      <div class="row video-container">
+        <div class="col-12">
+          <p class="titulo-iframe"> O ide é uma missão de amor </p>
+          <iframe src="https://www.youtube.com/embed/H_LtWqzPBJw?si=lE4RjhxqPw1L-HE2" title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="carrossel-container">
+    <div class="carrossel-wrapper">
+      <div class="carrossel-item" style="background-image: url('./assets/mari.JPG');">
+        <div class="frase">Fazer o IDE é ajudar os que precisam</div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/amor2.JPG');">
+        <div class="frase">Fazer o IDE é ajudar os que precisam</div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/nao.JPG');">
+        <div class="frase">Fazer o IDE é ajudar os que precisam</div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/acao.JPG');">
+        <div class="frase">Fazer o IDE é ajudar os que precisam</div>
+      </div>
+      <div class="carrossel-item" style="background-image: url('./assets/presentes.JPG');">
+        <div class="frase">Fazer o IDE é ajudar os que precisam</div>
+      </div>
+    </div>
+  
+
+    <div class="controle controle-esquerda" onclick="mudarSlide(-1)">&#10094;</div>
+    <div class="controle controle-direita" onclick="mudarSlide(1)">&#10095;</div>  
+  </div>
+
+  <div class="container"> <a href="https://www.instagram.com/amareservirsempre/" class="versiculoss"> Saiba mais sobre o projeto Amar e Servir Sempre</a></div> 
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="versiculo">"A religião pura e verdadeira aos olhos de Deus, o Pai, é esta: cuidar dos órfãos e das
+          viúvas em suas dificuldades e não se deixar corromper pelo mundo."
+          <a href="https://www.bible.com/pt/bible/1930/JAS.1.27.NVT" class="versiculoss">
+            Tiago 1:27</a>
+        </p>
+
+        <p class="descrever" style="margin-top: 15px;">Deus se agrada daqueles que vivem uma vida onde a ajuda ao
+          próximo é colocada em prática,
+          não é atoa que o Apóstolo Tiago sendo usado pelo Espírito Santo, escreveu
+          o versiculo acima. Jesus também disse sobre ajudar os que necessitam: Pois eu tive fome, e vocês me deram de
+          comer; tive sede, e vocês me deram de beber; fui estrangeiro, e vocês me acolheram;
+
+          necessitei de roupas, e vocês me vestiram; estive enfermo, e vocês cuidaram de mim; estive preso, e vocês me
+          visitaram'.
+
+          "Então os justos lhe responderão: 'Senhor, quando te vimos com fome e te demos de comer, ou com sede e te
+          demos de beber?
+
+          Quando te vimos como estrangeiro e te acolhemos, ou necessitado de roupas e te vestimos?
+
+          Quando te vimos enfermo ou preso e fomos te visitar?'
+
+          "O Rei responderá: 'Digo a verdade: O que vocês fizeram a algum dos meus menores irmãos, a mim o fizeram'.
+
+          "Então ele dirá aos que estiverem à sua esquerda: 'Malditos, apartem-se de mim para o fogo eterno, preparado
+          para o Diabo e os seus anjos.
+
+          Pois eu tive fome, e vocês não me deram de comer; tive sede, e nada me deram para beber;
+
+          fui estrangeiro, e vocês não me acolheram; necessitei de roupas, e vocês não me vestiram; estive enfermo e
+          preso, e vocês não me visitaram'.
+
+          "Eles também responderão: 'Senhor, quando te vimos com fome ou com sede ou estrangeiro ou necessitado de
+          roupas ou enfermo ou preso, e não te ajudamos?'
+
+          "Ele responderá: 'Digo a verdade: O que vocês deixaram de fazer a alguns destes mais pequeninos, também a
+          mim deixaram de fazê-lo'."
+        </p>
+        <p class="descrever"> Eis ai uma das formas de agradar a Deus, ajudando outras pessoas, deixando o
+          egoísmo e o comodismo de lado
+          e se dispondo a glorificar ao Senhor com as boas obras que o Espírito Santo te capacita a fazer, ao fazer
+          isso, você com certeza vai expirimentar mais do amor de Deus
+          e quando o fizer poderá gerar glória ao nome do Senhor, pois a palavra diz: "Tudo isso é para o bem de vocês.
+          E, à medida que a graça alcançar mais pessoas, haverá
+          muitas ações de graças, e Deus receberá cada vez mais glória." <a
+            href="https://www.bible.com/pt/bible/1930/2CO.4.15.NVT" class="versiculoss">2Coríntios 4:15</a></p>
+      </div>
+    </div>
+  </div>
+  <footer class="footer ">
+    <div class="footer-content container ">
+      <div class="footer-section">
+        <h4>Responsáveis pelo Projeto</h4>
+        <p><a href="link-para-perfil-davi" target="_blank">Davi Alves</a> </p>
+        <p> <a href="link-para-perfil-joao" target="_blank">João Gomes</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Movimentos Citados</h4>
+        <p>
+          <a href="link-para-biblia-em-audio" target="_blank">Bíblia em Áudio</a></p> 
+ 
+         <p><a href="link-para-servir-e-amar" target="_blank">Servir e Amar</a></p>
+        
+      </div>
+      <div class="footer-section missionarios-section">
+        <h4>Missionários Cadastrados</h4>
+        <div class="missionarios">
+          <div class="row" style="flex-direction: row;">
+          <a href="link-para-rayane-martins" target="_blank">Rayane Martins</a>
+          <a href="link-para-julio-costa" target="_blank">Julio Costa</a>
+          <a href="link-para-isaque-brolezi" target="_blank">Isaque Brolezi</a>
+          <a href="link-para-breno-munhoz" target="_blank">Breno Rocco Munhoz</a>
+          <a href="link-para-rafael-fornari" target="_blank">Rafael Fornari</a>
+       </div> </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+
+  <script>
+    let indexAtual = 0;
+    const itensCarrossel = document.querySelectorAll('.carrossel-item');
+    const totalItens = itensCarrossel.length;
+
+    function mudarSlide(direcao) {
+      indexAtual += direcao;
+
+      if (indexAtual < 0) {
+        indexAtual = totalItens - 1;  
+      } else if (indexAtual >= totalItens) {
+        indexAtual = 0;  
+      }
+
+      const wrapper = document.querySelector('.carrossel-wrapper');
+      wrapper.style.transform = `translateX(-${indexAtual * 100}%)`;
+    }
+
+    window.onload = function () {
+      mudarSlide(0); 
+    };
+
+
+
+
+
+
+
+  </script>
+  <script src="./js/iniciar-firebase.js"></script>
+  <script src="./js/navbar.js"></script>
+  <script src="./js/cadastro.js"></script>
+  <script src="./js/logout.js"></script>
+
+  <script src="./js/auth.js" defer></script>
+  <script src="./js/botao.js"></script>
+
+</body>

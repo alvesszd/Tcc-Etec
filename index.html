@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan</title>
+  <link rel="shortcut icon" type="imagex/png" href="./assets/cruz.png">
+
+  <link rel="stylesheet" href="./css/var.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/cadastro.css">
+  <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap-grid.css">
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+  <!-- Adicionando ícones -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body >
+  
+    <nav class="nav cadastro-nav">
+      <div class="nav-logo">
+        <p style="color: #fff;">Evan</p>
+      </div>
+      
+      <div class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html" class="link active white" style="color: #fff;">Home</a></li>
+          <li><a href="ide.html" class="link white" style="color: #fff;">Ide</a></li>
+          <li><a href="ajude.html" class="link white" style="color: #fff;">Ajude</a></li>
+          <li><a href="missionarios.html" class="link white" style="color: #fff;">Missionários</a></li>
+          <li id="editProfileBtn"><a href="editar-perfil.html" style="color: #fff;" class="link">Editar Perfil</a></li>
+        </ul>
+      </div>
+      <div class="nav-button">
+        <button class="botao-nav botao-branco" id="logoutBtn">
+          <a href="" style="text-decoration: none; color: #ffffff;">Sair</a>
+        </button>
+        <button class="botao-nav botao-branco" id="loginBtn">
+          <a href="cadastro.html" style="text-decoration: none; color: #ffffff;">Cadastre-se</a>
+        </button>
+        <button class="botao-nav" id="signupBtn">
+          <a href="cadastro.html" style="text-decoration: none; color: #ffffff;">Login</a>
+        </button>
+      </div>
+      <div class="nav-menu-botao">
+        <i class="bx bx-menu" onclick="functionmenu()"></i>
+      </div>
+    </nav>
+
+
+  <main class="home-main">
+    <div class="container">
+      <div class="row homepage">
+        <div class="col-12 texto-home">
+          <div class="blur-cont">
+            <span class="sub-tit">Ajude pessoas com o DNA missionário</span>
+          </div>
+          <p class="titulo">Evan</p>
+          <hr class="hr-home">
+          <p class="textinho">Conheça a vida em missões, como ela funciona, quais são as suas dificuldades,
+            como o Senhor conduziu as pessoas para esse propósito, e se possível, ajude!
+          </p>
+         <a href="ide.html"><button  class="rota-ide"> Saiba Mais</button> </a>
+        </div>
+       
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer ">
+    <div class="footer-content container ">
+      <div class="footer-section">
+        <h4>Responsáveis pelo Projeto</h4>
+        <p><a href="https://www.linkedin.com/in/davi-alves-8405b3249/" target="_blank">Davi Alves</a> </p>
+        <p> <a href="" target="_blank">João Gomes</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Movimentos Citados</h4>
+        <p>
+          <a href="https://www.instagram.com/movimentokebur/" target="_blank">Bíblia em Áudio</a></p> 
+ 
+         <p><a href="https://www.instagram.com/amareservirsempre/" target="_blank">Servir e Amar</a></p>
+        
+      </div>
+      <div class="footer-section missionarios-section">
+        <h4>Missionários que ajudaram!</h4>
+        <div class="missionarios">
+          <div class="row" style="flex-direction: row;">
+          <a href="https://www.instagram.com/rayanemaartins_/" target="_blank">Rayane Martins</a>
+          <a href="https://www.instagram.com/isaque_brolezi/" target="_blank">Isaque Brolezi</a>
+          <a href="https://www.instagram.com/mz_brenoxz/" target="_blank">Breno Rocco Munhoz</a>
+          <a href="https://www.instagram.com/rafael4nari/" target="_blank">Rafael Fornari</a>
+       </div> </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/iniciar-firebase.js"></script>
+  <script src="./js/navbar.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/logout.js"></script>
+
+  <script src="./js/perfilPublico.js"></script>
+
+</body>
+
+</html>

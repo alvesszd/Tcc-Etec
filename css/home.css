@@ -1,0 +1,165 @@
+.sub-tit {
+    font-family: var(--fonte-texto);
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--cor-neutro-2);
+
+}
+
+.titulo {
+    font-family: var(--fonte-titulo);
+    margin-left: -8px;
+    font-size: 165px;
+    color: white;
+}
+
+.textinho {
+    color: var(--cor-neutro-2);
+    font-family: var(--fonte-texto);
+    font-size: 22px;
+}
+
+
+.home-main {
+    background: url("../assets/maneiro.jpg");
+
+
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    height: 100vh;
+}
+
+
+.home-main::before {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: brightness(35%);
+    z-index: 0;
+}
+
+
+.homepage {
+    position: relative;
+    color: var(--cor-neutro-2);
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.text-home {
+    z-index: 1041;
+}
+
+.rota-ide {
+    margin-top: 20px;
+    height: 60px;
+    width: 210px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: ease-out 0.6s;
+    background-color: var(--cor-principal);
+    color: #fff;
+    font-weight: 600;
+    text-transform:uppercase;
+    letter-spacing: 1px;
+    font-size: 15px ;
+}
+
+.rota-ide:hover{
+    transition: ease-in-out 0.6s;
+    background-color: var(--cor-neutro-2);
+    color: var(--cor-principal);
+}
+
+.blur-cont {
+    position: relative;
+    align-items: center;
+    padding-top: 2rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.blur {
+    position: absolute;
+    box-shadow: 0px 0px 1000px 50px #9fac89;
+    z-index: -100;
+    width: 300px;
+
+}
+
+
+
+
+.hr-home {
+    border: none;
+    height: 3px;
+    background-color: var(--cor--acento);
+    width: 70%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+  }
+  
+  @media (max-width: 768px) {
+    .sub-tit {
+        font-size: 18px; /* Fonte menor */
+    }
+
+    .titulo {
+        font-size: 90px; /* Reduz tamanho do título */
+        margin-left: 0; /* Remova a margem esquerda */
+    }
+
+    .textinho {
+        font-size: 18px; /* Reduz tamanho da fonte do texto */
+    }
+
+    .rota-ide {
+        height: 50px;
+        width: 180px;
+        font-size: 14px; /* Reduz tamanho do botão e da fonte */
+    }
+
+    .hr-home {
+        width: 80%; /* Ajusta a largura da linha horizontal */
+    }
+}
+
+/* Media query para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    .sub-tit {
+        font-size: 16px;
+    }
+
+    .titulo {
+        font-size: 70px;
+    }
+
+    .textinho {
+        font-size: 16px;
+    }
+
+    .rota-ide {
+        height: 45px;
+        width: 150px;
+        font-size: 13px;
+    }
+
+    .hr-home {
+        width: 90%;
+    }
+}

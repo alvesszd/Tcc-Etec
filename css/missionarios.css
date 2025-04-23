@@ -1,0 +1,97 @@
+
+*{
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+
+}
+
+body {
+  background-color: #f8f9fa;
+  font-family: var(--fonte-texto);
+  text-decoration: none;
+  
+}
+
+.container {
+  padding-top: 20px;
+  
+}
+
+
+.cardss{
+  z-index: -1;
+  width: 95%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1) ;
+}
+
+
+.missionary{ 
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.cardss {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardss:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  width: 90%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.card-body {
+  padding: 15px;
+  text-align: center; 
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+  
+
+.btn-primary {
+  width: 90px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: var(--cor-principal);
+  transition: 1s;
+  cursor: pointer;
+  color: #f8f9fa;
+}
+
+.btn-primary:hover {
+  background-color: var(--cor-neutro-1);
+ 
+}
+
+a{
+  height: 40px;
+  width: 100px;
+  text-decoration: none;
+ 
+}

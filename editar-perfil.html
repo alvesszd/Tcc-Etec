@@ -1,0 +1,146 @@
+  <!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="./css/var.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/editar-perfil.css">
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap-grid.css">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/cruz.png">
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <!-- Adicionando ícones -->
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+  </head>
+  <body>
+    <nav class="nav nav-resto">
+      <div class="nav-logo">
+        <p>Evan</p>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html" class="link">Home</a></li>
+          <li><a href="ide.html" class="link">Ide</a></li>
+          <li><a href="ajude.html" class="link black">Ajude</a></li>
+          <li><a href="missionarios.html" class="link active">Missionários</a></li>
+          <li id="editProfileBtn"><a href="editar-perfil.html" class="link">Editar Perfil</a></li>
+        </ul>
+      </div>
+      <div class="nav-button">
+        <button class="botao-nav botao-branco" id="logoutBtn">
+          <a href="" style="text-decoration: none; color: #ffffff;">Sair</a>
+        </button>
+        <button class="botao-nav botao-branco" id="loginBtn">
+          <a href="cadastro.html" style="text-decoration: none; color: #ffffff;">Cadastre-se</a>
+        </button>
+        <button class="botao-nav" id="signupBtn">
+          <a href="cadastro.html" style="text-decoration: none; color: #f7f7f7;">Login</a>
+        </button>
+      </div>
+      <div class="nav-menu-botao ">
+        <i class="bx bx-menu" onclick="functionmenu()"></i>
+      </div>
+    </nav>
+
+
+
+    <div class="container" style="margin-top: 120px;">
+      <h1>Editar Perfil</h1>
+      <form id="editProfileForm">
+    <div class="campos-edit">
+      Seu nome Completo
+          <input class="inputt" type="text" id="fullName" placeholder="Nome Completo" required>
+    </div>
+    <div class="campos-edit">
+      Conte sobre como o Senhor te chamou para missões, se possível sua conversão
+          <textarea class="inputt" id="testimony" placeholder="Testemunho com Missões" required></textarea>
+    </div>
+    <div class="campos-edit">
+      Onde o Senhor te chamou para servir atualmente
+          <input class="inputt" type="text" id="missionField" placeholder="Campo Missionário" required>
+    </div>
+    <div class="campos-edit">
+      Instagram
+      <input class="inputt" type="text" id="instagram" placeholder="Instagram">
+    </div>
+    <div class="campos-edit">
+      Chave Pix
+      <input class="inputt" type="text" id="pixKey" placeholder="Chave Pix">
+    </div>
+    <div class="campos-edit">
+      <input type="file" id="missionPhoto" accept="image/*">
+      <label for="missionPhoto">Foto em Missões (FOTO QUE PRECISA SER TIRADA NA HORIZONTAL)</label>
+    </div>
+    <div class="campos-edit">
+      <input type="file" id="profilePicture" accept="image/*">
+      <label for="profilePicture">Foto de Perfil (FOTO COM SEU ROSTO NO CENTRO)</label>
+    </div>
+    <div class="campos-edit editar">
+      <input type="submit" class="submitte" id="updateProfileButton" value="Atualizar">
+    </div>
+  </form>
+  </div>
+
+
+  
+  <div id="loadingScreen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Atualizando...</p>
+  </div>
+
+  <footer class="footer ">
+    <div class="footer-content container ">
+      <div class="footer-section">
+        <h4>Responsáveis pelo Projeto</h4>
+        <p><a href="https://www.linkedin.com/in/davi-alves-8405b3249/" target="_blank">Davi Alves</a> </p>
+        <p> <a href="" target="_blank">João Gomes</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Movimentos Citados</h4>
+        <p>
+          <a href="https://www.instagram.com/movimentokebur/" target="_blank">Bíblia em Áudio</a></p> 
+ 
+         <p><a href="https://www.instagram.com/amareservirsempre/" target="_blank">Servir e Amar</a></p>
+        
+      </div>
+      <div class="footer-section missionarios-section">
+        <h4>Missionários que ajudaram!</h4>
+        <div class="missionarios">
+          <div class="row" style="flex-direction: row;">
+          <a href="https://www.instagram.com/rayanemaartins_/" target="_blank">Rayane Martins</a>
+          <a href="https://www.instagram.com/isaque_brolezi/" target="_blank">Isaque Brolezi</a>
+          <a href="https://www.instagram.com/mz_brenoxz/" target="_blank">Breno Rocco Munhoz</a>
+          <a href="https://www.instagram.com/rafael4nari/" target="_blank">Rafael Fornari</a>
+       </div> </div>
+      </div>
+    </div>
+  </footer>
+  
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Seu arquivo de configuração do Firebase -->  
+    <script src="./js/iniciar-firebase.js"></script>
+    <script src="./js/profile-edit.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/auth.js"></script>
+
+
+
+  </body>
+  </html>
